@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "titulo": "Desenvolvedor Front-End Júnior",
+        "empresa": "Tech Solutions",
+        "area": "Front-End",
+        "habilidadesRequisitadas": ["HTML", "CSS", "JavaScript"],
+        "experienciaMinimaMeses": 6,
+        "frameworkPrincipal": "Nenhum"
+    },
+    {
+        "id": 2,
+        "titulo": "Desenvolvedor React Júnior",
+        "empresa": "Inovação Digital",
+        "area": "Front-End",
+        "habilidadesRequisitadas": ["HTML", "CSS", "JavaScript", "React"],
+        "experienciaMinimaMeses": 12,
+        "frameworkPrincipal": "React"
+    },
+    {
+        "id": 3,
+        "titulo": "Estagiário de Desenvolvimento Web",
+        "empresa": "SoftPlan",
+        "area": "Front-End",
+        "habilidadesRequisitadas": ["HTML", "CSS"],
+        "experienciaMinimaMeses": 0,
+        "frameworkPrincipal": "Nenhum"
+    },
+    {
+        "id": 4,
+        "titulo": "Programador Front-End (Web e Mobile)",
+        "empresa": "Target Sistemas",
+        "area": "Front-End",
+        "habilidadesRequisitadas": ["JavaScript", "React", "CSS"],
+        "experienciaMinimaMeses": 6,
+        "frameworkPrincipal": "React"
+    }
+]
