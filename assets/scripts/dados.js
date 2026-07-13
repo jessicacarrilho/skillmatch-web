@@ -4,16 +4,16 @@ export async function buscarVagas(atualizarStatusCallback) {
     try {
         atualizarStatusCallback("carregando");
 
-        const resposta = await fetch(".vagas.json");
+        const resposta = await fetch("./assets/dados/vagas.json");
 
         if(!resposta.ok) {
             throw new Error("Não foi possível carregar o arquivo de vagas.");
             
         }
 
-        const vagasCompatíveis = await resposta.json();
+        const listaVagas = await resposta.json();
         
-        if(!vagasCompatíveis || vagasCompatíveis.length === 0) {
+        if(!listaVagas || listaVagas.length === 0) {
             atualizarStatusCallback("vazio");
             return []
         }
