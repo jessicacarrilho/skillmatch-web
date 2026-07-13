@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillMatch Web</title>
+    <meta name="description"
+        content="SkillMatch Web - Plataforma de correspondência de habilidades para profissionais e empresas.">
+    <!--CSS Externo-->
+    <link rel="stylesheet" href="./assets/styles/index.styles.css">
+</head>
+
+<body>
+    <!--Identidade do Sistema-->
+    <header>
+        <img src="./assets/img/logo.svg" alt="Logo SkillMatch Web">
+
+        <h1>SkillMatch Web</h1>
+
+        <nav aria-label="Navegação Principal">
+            <ul>
+                <li><a href="#perfil">Meu Perfil</a></li>
+                <li><a href="#resultados">Vagas Disponíveis</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+
+    <main>
+
+        <!--Formulário de Perfil-->
+        <section id="perfil">
+            <h2 id="titulo-perfil">Meu Perfil Profissional</h2>
+
+
+            <form id="formulario-perfil">
+                <div class="campo">
+                    <label for="nome">Nome Completo:</label>
+                    <input type="text" id="nome" required placeholder="Digite seu nome">
+                </div>
+
+                <div class="campo">
+                    <label for="area-atuacao">Área de Atuação:</label>
+                    <select id="area-atuacao" required>
+                        <option value="">Selecione sua área de atuação:</option>
+                        <option value="Front-End">Desenvolvedor Front-End</option>
+                        <option value="Back-End">Desenvolvedor Back-End</option>
+                        <option value="Full-Stack">Desenvolvedor Full-Stack</option>
+                    </select>
+                </div>
+
+                <!--Lista de Habilidades-->
+                <fieldset class="campo">
+                    <legend>Habilidades:</legend>
+
+                    <label>
+                        <input type="checkbox" name="habilidades" value="HTML"> HTML
+                    </label>
+                    <label>
+                        <input type="checkbox" name="habilidades" value="CSS"> CSS
+                    </label>
+                    <label>
+                        <input type="checkbox" name="habilidades" value="JavaScript"> JavaScript
+                    </label>
+                    <label>
+                        <input type="checkbox" name="habilidades" value="React"> React
+                    </label>
+                </fieldset>
+
+                <button type="submit">Analisar Compatibilidade</button>
+
+            </form>
+        </section>
+
+        <!--Área de resultados-->
+        <section id="resultados">
+            <h2 id="titulo-resultados">Vagas Encontradas</h2>
+
+            <!-- Status da Busca (carregando/erro/vazio)-->
+            <div id="status-busca"></div>
+
+            <!-- Container de Vagas via JavaScript-->
+            <div id="container-vagas" class="vagas-flex"></div>
+        </section>
+    </main>
+
+    <!--Rodapé-->
+    <footer>
+        <p>&copy; 2026 SkillMatch Web. Todos os direitos reservados.
+            Desenvolvido por: Jessica Vasconcelos Carrilho
+        </p>
+    </footer>
+    <!--JavaScript Externo-->
+    <script type="module" src="./assets/scripts/main.js"></script>
+</body>
+
+</html>
