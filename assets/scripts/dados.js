@@ -19,7 +19,7 @@ export async function buscarVagas(atualizarStatusCallback) {
         }
 
         atualizarStatusCallback("sucesso");
-        return vagasCompatíveis;
+        return listaVagas;
 
     
 } catch (erro) {
