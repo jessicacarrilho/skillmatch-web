@@ -49,6 +49,7 @@ export function exibirStatusBusca(estado) {
         case "erro":
             divStatus.textContent = "Falha de rede: Não foi possível obter os dados do arquivo de vagas.";
             divStatus.style.color = "#c0392b"
+            break;
         case "sucesso":
             divStatus.textContent = "";
             break;
@@ -80,7 +81,7 @@ export function renderizarCardsVagas (vagasCompativeis, idVagaDestaque) {
         area.innerHTML = `<strong>Área:</strong> ${vaga.area}`;
 
         const competencias = document.createElement("p");
-        competencias.innerHTML = `<strong>Requisitos:</strong> ${vaga.habilidades}`;
+        competencias.innerHTML = `<strong>Requisitos:</strong> ${vaga.habilidadesRequisitadas}`;
 
         const compatibilidadeInfo = document.createElement("div");
         compatibilidadeInfo.innerHTML = `<strong>Compatibilidade:</strong> ${vaga.compatibilidade}%`;
