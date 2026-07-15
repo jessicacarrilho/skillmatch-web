@@ -4,6 +4,7 @@
 export function obterDadosFormulario() {
     const inputNome = document.querySelector("#nome");
 const selectArea = document.querySelector("#area-atuacao");
+const inputExperiencia = document.querySelector("#experiencia-meses");
 
 
 const checkboxesHabilidades = document.querySelectorAll('input[name="habilidades"]:checked');
@@ -13,7 +14,7 @@ return {
     nome: inputNome.value.trim(),
     area: selectArea.value,
     habilidades: habilidadesSelecionadas,
-    experienciaMeses: 12
+    experienciaMeses: Number(inputExperiencia.value) || 0
 };
 }
 
@@ -23,11 +24,23 @@ export function preencherFormulario(dadosPerfil) {
 
     document.querySelector("#nome").value = dadosPerfil.nome || "";
     document.querySelector("#area-atuacao").value = dadosPerfil.area || "";
+    document.querySelector("#experiencia-meses").value = dadosPerfil.experienciaMeses ?? 0;
 
     const checkboxes = document.querySelectorAll('input[name="habilidades"]');
     checkboxes.forEach(checkbox => {
         checkbox.checked = dadosPerfil.habilidades.includes(checkbox.value);
     });
+}
+
+// Exibe o resumo do perfil analisado //
+export function exibirResumoPerfil(dadosPerfil, numeroAnalise) {
+    const divResumo = document.querySelector("#resumo-perfil");
+ 
+    divResumo.innerHTML = `
+        <p><strong>Perfil analisado:</strong> ${dadosPerfil.nome} — ${dadosPerfil.area}</p>
+        <p><strong>Experiência informada:</strong> ${dadosPerfil.experienciaMeses} mes(es)</p>
+        <p><strong>Análises realizadas nesta sessão:</strong> ${numeroAnalise}</p>
+    `;
 }
 
 // Exibe mensagens textuais para os estados da Busca //
@@ -37,18 +50,23 @@ export function exibirStatusBusca(estado) {
 
     containerVagas.innerHTML = "";
 
+    const divRecomendacao = document.querySelector("#recomendacao-estudo");
+
     switch (estado) {
         case "carregando":
             divStatus.textContent = "Carregando vagas compatíveis, por favor aguarde...";
             divStatus.style.color = "#34495e";
+            divRecomendacao.textContent = "";
             break;
         case "vazio":
             divStatus.textContent = "Nenhuma vaga compatível com sua área de atuação.";
             divStatus.style.color = "#7f8c8d"
+            divRecomendacao.textContent = "";
             break;
         case "erro":
             divStatus.textContent = "Falha de rede: Não foi possível obter os dados do arquivo de vagas.";
             divStatus.style.color = "#c0392b"
+            divRecomendacao.textContent = "";
             break;
         case "sucesso":
             divStatus.textContent = "";
@@ -58,7 +76,13 @@ export function exibirStatusBusca(estado) {
     }
 }
 
-//Renderiza os cards dinamicamente na tela usando componentes DOM nativos //
+// Exibe a recomendação de estudo //
+export function exibirRecomendacaoEstudo(mensagem) {
+    const divRecomendacao = document.querySelector("#recomendacao-estudo");
+    divRecomendacao.textContent = mensagem;
+}
+
+// Renderiza os cards dinamicamente na tela usando componentes DOM nativos //
 export function renderizarCardsVagas (vagasCompativeis, idVagaDestaque) {
     const containerVagas = document.querySelector("#container-vagas");
     containerVagas.innerHTML = "";
@@ -88,6 +112,16 @@ export function renderizarCardsVagas (vagasCompativeis, idVagaDestaque) {
         compatibilidadeInfo.style.marginTop = "10px";
         compatibilidadeInfo.style.fontWeight = "bold"
 
+        const encontradasInfo = document.createElement("p");
+        encontradasInfo.innerHTML = `<strong>Habilidades encontradas:</strong> `
+            + `${vaga.habilidadesEncontradas.length > 0 ? vaga.habilidadesEncontradas.join(", ") : "nenhuma"}`;
+        encontradasInfo.style.color = "#27ae60";
+ 
+        const faltantesInfo = document.createElement("p");
+        faltantesInfo.innerHTML = `<strong>Habilidades faltantes:</strong> `
+            + `${vaga.habilidadesFaltantes.length > 0 ? vaga.habilidadesFaltantes.join(", ") : "nenhuma"}`;
+        faltantesInfo.style.color = "#c0392b";
+
         if (vaga.id === idVagaDestaque && vaga.compatibilidade > 0) {
             const selo = document.createElement ("span");
             selo.textContent = "Melhor Opção para o seu Perfil!";
@@ -102,6 +136,8 @@ export function renderizarCardsVagas (vagasCompativeis, idVagaDestaque) {
         card.appendChild(area);
         card.appendChild(competencias);
         card.appendChild(compatibilidadeInfo);
+        card.appendChild(encontradasInfo);
+        card.appendChild(faltantesInfo);
 
         containerVagas.appendChild(card);
     });
