@@ -106,12 +106,17 @@ section {
     font-weight: bold;
   }
 
-  .campo input[type="text"], .campo select {
+  .campo input[type="text"], .campo input[type="number"], .campo select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
     width:100%;
+  }
+
+  .campo small {
+    color: #7f8c8d;
+    font-size: 0.8rem;
   }
 
   fieldset.campo {
@@ -158,10 +163,32 @@ section {
 
   /* Container de Vagas */
 
+  #resumo-perfil:not(:empty) {
+    background-color: #ecf0f1;
+    border-left: 4px solid #2c3e50;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+  }
+  
+   #resumo-perfil p {
+    margin: 2px 0;
+  }
+
   #status-busca {
     margin-bottom: 15px;
     font-weight: bold;
     color: #34495e;
+  }
+
+  #recomendacao-estudo:not(:empty) {
+    background-color: #eafaf1;
+    border-left: 4px solid #27ae60;
+    padding: 12px 15px;
+    margin-top: 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: #1e8449;
   }
 
   .vagas-flex {
