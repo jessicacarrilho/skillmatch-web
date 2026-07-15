@@ -51,6 +51,14 @@
                     </select>
                 </div>
 
+                <div class="campo">
+                    <label for="experiencia-meses">Experiência (em meses):</label>
+                    <input type="number" id="experiencia-meses" min="0" step="1" value="0" required
+                        aria-describedby="experiencia-ajuda">
+                    <small id="experiencia-ajuda">Informe quantos meses de experiência você já possui na sua área de
+                        atuação:</small>
+                </div>
+
                 <!--Lista de Habilidades-->
                 <fieldset class="campo">
                     <legend>Habilidades:</legend>
@@ -78,11 +86,17 @@
         <section id="resultados">
             <h2 id="titulo-resultados">Vagas Encontradas</h2>
 
+            <!-- Resumo do perfil analisado (nome, área e experiência em meses) -->
+            <div id="resumo-perfil" aria-live="polite"></div>
+
             <!-- Status da Busca (carregando/erro/vazio)-->
-            <div id="status-busca"></div>
+            <div id="status-busca" aria-live="polite"></div>
 
             <!-- Container de Vagas via JavaScript-->
             <div id="container-vagas" class="vagas-flex"></div>
+
+            <!-- Recomendação de estudo com base na vaga mais compatível -->
+            <div id="recomendacao-estudo" aria-live="polite"></div>
         </section>
     </main>
 
