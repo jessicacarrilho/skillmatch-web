@@ -42,10 +42,25 @@ calcularCompatibilidade(habilidadesUsuario, experienciaUsuarioMeses, callbackLog
     }
 
     if(typeof callbackLog === "function") {
-        callbackLog(`Compatibilidade calculada para a vaga $ {this.titulo}: $ {porcentagemFinal.toFixed(0)}%`);
+        callbackLog(`Compatibilidade calculada para a vaga ${this.titulo}: ${porcentagemFinal.toFixed(0)}%`);
     }
 
     return parseFloat(porcentagemFinal.toFixed(2));
+    }
+
+
+/* Separa habilidades encontradas x faltantes */
+obterAnaliseHabilidades(habilidadesUsuario) {
+        const habUsuarioMinusculo = habilidadesUsuario.map(habilidade => 
+            habilidade.toLowerCase());
+ 
+        const encontradas = this.habilidadesRequisitadas.filter(habilidade =>
+            habUsuarioMinusculo.includes(habilidade.toLowerCase()));
+ 
+        const faltantes = this.habilidadesRequisitadas.filter(habilidade =>
+            !habUsuarioMinusculo.includes(habilidade.toLowerCase()));
+ 
+        return { encontradas, faltantes };
     }
 }
 
@@ -78,3 +93,14 @@ export function criarContadorDeAnalises() {
     };
 }
 
+// Gera a recomendação de estudo com base nas habilidades que mais faltam //
+export function gerarRecomendacaoDeEstudo(vagaDestaque) {
+    if (!vagaDestaque || !vagaDestaque.habilidadesFaltantes || vagaDestaque.habilidadesFaltantes.length === 0) {
+        return "Parabéns! Seu perfil já atende a todos os requisitos da vaga mais compatível encontrada.";
+    }
+ 
+    const habilidadesParaEstudar = vagaDestaque.habilidadesFaltantes.join(", ");
+ 
+    return `Para aumentar sua compatibilidade com a vaga "${vagaDestaque.titulo}" (${vagaDestaque.empresa}), `
+        + `recomendamos estudar: ${habilidadesParaEstudar}.`;
+}

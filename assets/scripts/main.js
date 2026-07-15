@@ -41,6 +41,7 @@ async function inicializarAplicacao() {
                 vagaObjeto.frameworkPrincipal
             );
         })
+
 //Executa o Metodo Map e Filter //
         .filter(vagaInstanciada => vagaInstanciada.vagaCompativelComArea(dadosUsuario.area))
         .map(vagaInstanciada => {
@@ -52,9 +53,13 @@ async function inicializarAplicacao() {
                 logger
             );
 
+            const { encontradas, faltantes } = vagaInstanciada.obterAnaliseHabilidades(dadosUsuario.habilidades);
+
             return { 
                 ...vagaInstanciada,
-                compatibilidade: percentualCompatibilidade
+                compatibilidade: percentualCompatibilidade,
+                habilidadesEncontradas: encontradas,
+                habilidadesFaltantes: faltantes
             };
         });
 
@@ -71,6 +76,13 @@ async function inicializarAplicacao() {
 
         const numerodaAnalise = contarAnalise();
         console.log(`[contador] Análise realizada com sucesso! Total nesta sessão: ${numerodaAnalise}`);
+        exibirResumoPerfil(dadosUsuario, numerodaAnalise);
+
+// Gera e exibe a recomendação de estudo //
+        const mensagemRecomendacao = gerarRecomendacaoDeEstudo(melhorVagaElegivel);
+        exibirRecomendacaoEstudo(mensagemRecomendacao);
+
+
 
     }
     )   
