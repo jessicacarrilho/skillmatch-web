@@ -1,9 +1,9 @@
 // Configuração principal (Modulo ES) //
 
 //Importação dos modulos locais//
-import {VagaFrontEnd, encontrarMaiorCompatibilidade, criarContadorDeAnalises} from "./motor.js";
-import { buscarVagas, salvarPerfilLocalStorage, recuperarPerfilLocalStorage } from "./dados.js";
-import { obterDadosFormulario, preencherFormulario, exibirStatusBusca, renderizarCardsVagas } from "./ui.js";
+import {VagaFrontEnd, encontrarMaiorCompatibilidade, criarContadorDeAnalises, gerarRecomendacaoDeEstudo} from "./motor.js";
+import { buscarVagas, salvarPerfilLocalStorage, recuperarPerfilLocalStorage} from "./dados.js";
+import { obterDadosFormulario, preencherFormulario, exibirStatusBusca, renderizarCardsVagas,exibirResumoPerfil, exibirRecomendacaoEstudo} from "./ui.js";
 
 //inicializa a Closure para contar as buscas feitas na sessão//
 const contarAnalise = criarContadorDeAnalises();
