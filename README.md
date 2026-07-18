@@ -6,7 +6,7 @@ Desenvolvido por: Jessica de Castro Vasconcelos Carrilho
 
 Repositório: https://github.com/jessicacarrilho/skillmatch-web
 Kanban(Trello): https://trello.com/b/IzvmHLXc/skillmatch-web
-Vídeo de apresentação: 
+Vídeo de apresentação: https://drive.google.com/file/d/1S6dXnjNOoUUQjromddOk_6RjCnk0q9a6/view?usp=sharing
 
 
 Seja ben-vindo(a) ao repositório do projeto **SkillMatch-Web**.
